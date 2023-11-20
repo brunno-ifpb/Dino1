@@ -16,7 +16,7 @@ class Dino:
     def pular(self):
         if not self.pulo and not self.caindo and self.y == 276:
             self.pulo = True
-            self.altura_do_pulo = 12
+            self.altura_do_pulo = 10
 
     def gravidades(self):
         if self.pulo and self.altura_do_pulo > 0:
@@ -39,7 +39,7 @@ class Dino:
         self.pixels_count += 1
         self.velocidade += 0.001
 
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             self.pular()
 
         self.gravidades()

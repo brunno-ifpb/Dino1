@@ -1,4 +1,4 @@
-import dino, cactus, chao, pygame, random
+import dino, cactus, chao, pygame
 
 def main():
     try:
