@@ -1,42 +1,50 @@
-import player, cactus, chao, pygame, random
+import pygame
 
-# Loop principal
-def main():
-    try:
-        dino1 = player.Dino()
-        cacto1 = cactus.Cacto()
-        chao1 = chao.Chao()
+class Dino:
+    def __init__(self):
+        self.pulo = False
+        self.caindo = False
+        self.gravidade = 6
+        self.x = 100
+        self.y = 276
+        self.rect = pygame.Rect(self.x, self.y, 20, 20)
+        self.altura_do_pulo = 0
+        self.pixels_count = 0
+        self.font = pygame.font.Font(None, 36)
+        self.velocidade = 10
 
-        while True:
-            
-            clock.tick(60)
+    def pular(self):
+        if not self.pulo and not self.caindo and self.y == 276:
+            self.pulo = True
+            self.altura_do_pulo = 12
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
+    def gravidades(self):
+        if self.pulo and self.altura_do_pulo > 0:
+            self.y -= 10
+            self.altura_do_pulo -= 1
+        else:
+            self.caindo = True
+            if self.y < 276:
+                self.y += self.gravidade
+            else:
+                self.y = 276
+                self.pulo = False
+                self.caindo = False
 
-            dino1.movimentacao()
-            cacto1.movimentacao(dino1)
-            chao1.movimentacao()
+        self.rect.y = self.y
 
-            dino1.desenhar(screen)
-            cacto1.desenhar(screen)
-            chao1.desenhar(screen)
 
-            cacto1.colisao(dino1)
+    def movimentacao(self):
+        keys = pygame.key.get_pressed()
+        self.pixels_count += 1
+        self.velocidade += 0.001
 
-            pygame.display.flip()
-            screen.fill((0, 0, 0))
-    except:
-         pass
+        if keys[pygame.K_SPACE]:
+            self.pular()
 
-pygame.init()
+        self.gravidades()
 
-screen = pygame.display.set_mode((600, 400))
-clock = pygame.time.Clock()
-pygame.display.set_caption("Dino")
-
-main()
-
-pygame.quit()
+    def desenhar(self, screen):
+        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
+        pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (255, 255, 255))
+        screen.blit(pixels_count_surface, (550, 10))  
