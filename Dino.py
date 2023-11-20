@@ -59,21 +59,25 @@ class Cacto:
         self.x = 600
         self.y = 256
         self.velocidade = 10
-        self.rect = pygame.Rect(self.x, self.y, 20, 20)
+        self.rect = pygame.Rect(self.x, self.y, 20, 40)
 
     def movimentacao(self):
-        self.x -= self.velocidade + random.randint(0, 5)
-        if self.x < -10:
+        self.x -= self.velocidade + random.randint(0, 8)
+        if self.x < -15:
             self.x = random.randint(600, 750)
             if self.velocidade < 30:
                 self.velocidade += 0.1
+        
+        self.rect = pygame.Rect(self.x, self.y, 20, 40) 
 
     def desenhar(self):
         pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, 20, 40))
 
     def colisao(self, dino):
         if self.rect.colliderect(dino.rect):
+            print(f"Você perdeu! Sua pontuação foi de: {dino.pixels_count//10} pontos")
             pygame.quit()
+            
 
 class Chao:
     def __init__(self):
@@ -91,30 +95,35 @@ class Chao:
 
 # Loop principal
 def main():
-    dino1 = Dino()
-    cacto1 = Cacto()
-    chao1 = Chao()
+    try:
+        dino1 = Dino()
+        cacto1 = Cacto()
+        chao1 = Chao()
 
-    while True:
-        clock.tick(60)
+        while True:
+            clock.tick(60)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
 
-        dino1.movimentacao()
-        cacto1.movimentacao()
-        chao1.movimentacao()
+            dino1.movimentacao()
+            cacto1.movimentacao()
+            chao1.movimentacao()
 
-        dino1.desenhar()
-        cacto1.desenhar()
-        chao1.desenhar()
+            dino1.desenhar()
+            cacto1.desenhar()
+            chao1.desenhar()
 
-        cacto1.colisao(dino1)
+            cacto1.colisao(dino1)
 
-        pygame.display.flip()
-        screen.fill((0, 0, 0))
+            
+            pygame.display.flip()
+            screen.fill((0, 0, 0))
+
+    except:
+         pass
 
 pygame.init()
 
