@@ -1,107 +1,35 @@
-import pygame
-import random
-
-class Dino:
-    def __init__(self):
-        self.pulo = False
-        self.caindo = False
-        self.gravidade = 4
-        self.x = 100
-        self.y = 276
-        self.rect = pygame.Rect(self.x, self.y, 20, 20)
-        self.altura_do_pulo = 0
-
-    def pular(self):
-        if not self.pulo and not self.caindo and self.y == 276:
-            self.pulo = True
-            self.altura_do_pulo = 10
-
-    def gravidades(self):
-        if self.pulo and self.altura_do_pulo > 0:
-            self.y -= 10
-            self.altura_do_pulo -= 1
-        else:
-            self.caindo = True
-            if self.y < 276:
-                self.y += self.gravidade
-            else:
-                self.y = 276
-                self.pulo = False
-                self.caindo = False
-
-        self.rect.y = self.y
-
-    def movimentacao(self):
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_SPACE]:
-            self.pular()
-
-        self.gravidades()
-
-    def desenhar(self):
-        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
-
-class Cacto:
-    def __init__(self):
-        self.x = 600
-        self.y = 256
-        self.velocidade = 10
-        self.rect = pygame.Rect(self.x, self.y, 20, 20)
-
-    def movimentacao(self):
-        self.x -= self.velocidade
-        if self.x < -10:
-            self.x = 600
-            self.velocidade = random.randint(5, 15)
-
-    def desenhar(self):
-        pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, 20, 40))
-
-    def colisao(self, dino):
-        if self.rect.colliderect(dino.rect):
-            pygame.quit()
-
-class Chao:
-    def __init__(self):
-        self.x = 0
-        self.y = 300
-        self.velocidade = 10
-
-    def movimentacao(self):
-        self.x -= self.velocidade
-        if self.x < -600:
-            self.x = 0
-
-    def desenhar(self):
-        pygame.draw.line(screen, (0, 255, 0), (self.x, self.y), (self.x + 1500, self.y), 10)
+import player, cactus, chao, pygame, random
 
 # Loop principal
 def main():
-    dino1 = Dino()
-    cacto1 = Cacto()
-    chao1 = Chao()
+    try:
+        dino1 = player.Dino()
+        cacto1 = cactus.Cacto()
+        chao1 = chao.Chao()
 
-    while True:
-        clock.tick(60)
+        while True:
+            
+            clock.tick(60)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
 
-        dino1.movimentacao()
-        cacto1.movimentacao()
-        chao1.movimentacao()
+            dino1.movimentacao()
+            cacto1.movimentacao()
+            chao1.movimentacao()
 
-        dino1.desenhar()
-        cacto1.desenhar()
-        chao1.desenhar()
+            dino1.desenhar(screen)
+            cacto1.desenhar(screen)
+            chao1.desenhar(screen)
 
-        cacto1.colisao(dino1)
+            cacto1.colisao(dino1)
 
-        pygame.display.flip()
-        screen.fill((0, 0, 0))
+            pygame.display.flip()
+            screen.fill((0, 0, 0))
+    except:
+         pass
 
 pygame.init()
 
