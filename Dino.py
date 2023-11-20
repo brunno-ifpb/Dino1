@@ -1,6 +1,8 @@
 import pygame
 import random
 
+# teste
+
 class Dino:
     def __init__(self):
         self.pulo = False
@@ -10,6 +12,9 @@ class Dino:
         self.y = 276
         self.rect = pygame.Rect(self.x, self.y, 20, 20)
         self.altura_do_pulo = 0
+        self.pixels_count = 0
+        self.font = pygame.font.Font(None, 36)
+        self.velocidade = 10
 
     def pular(self):
         if not self.pulo and not self.caindo and self.y == 276:
@@ -31,8 +36,11 @@ class Dino:
 
         self.rect.y = self.y
 
+
     def movimentacao(self):
         keys = pygame.key.get_pressed()
+        self.pixels_count += 1
+        self.velocidade += 0.001
 
         if keys[pygame.K_SPACE]:
             self.pular()
@@ -41,6 +49,10 @@ class Dino:
 
     def desenhar(self):
         pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
+        pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (255, 255, 255)) # contador
+        screen.blit(pixels_count_surface, (550, 10))  # desenha o objeto de superfície na tela
+
+        
 
 class Cacto:
     def __init__(self):
@@ -50,10 +62,11 @@ class Cacto:
         self.rect = pygame.Rect(self.x, self.y, 20, 20)
 
     def movimentacao(self):
-        self.x -= self.velocidade
+        self.x -= self.velocidade + random.randint(0, 5)
         if self.x < -10:
-            self.x = 600
-            self.velocidade = random.randint(5, 15)
+            self.x = random.randint(600, 750)
+            if self.velocidade < 30:
+                self.velocidade += 0.1
 
     def desenhar(self):
         pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, 20, 40))
