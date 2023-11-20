@@ -17,7 +17,7 @@ def main():
                     quit()
 
             dino1.movimentacao()
-            cacto1.movimentacao()
+            cacto1.movimentacao(dino1)
             chao1.movimentacao()
 
             dino1.desenhar(screen)

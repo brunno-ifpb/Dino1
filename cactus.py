@@ -8,12 +8,13 @@ class Cacto:
         self.velocidade = 10
         self.rect = pygame.Rect(self.x, self.y, 20, 40)
 
-    def movimentacao(self):
-        self.x -= self.velocidade + random.randint(0, 8)
-        if self.x < -15:
-            self.x = random.randint(600, 750)
-            if self.velocidade < 30:
-                self.velocidade += 0.1
+    def movimentacao(self, dino):
+        if dino.pixels_count//10 > 15:
+            self.x -= self.velocidade + random.randint(0, 8)
+            if self.x < -15:
+                self.x = random.randint(600, 750)
+                if self.velocidade < 30:
+                    self.velocidade += 0.1
         
         self.rect = pygame.Rect(self.x, self.y, 20, 40) 
 
