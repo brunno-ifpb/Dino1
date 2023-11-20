@@ -2,6 +2,7 @@ import pygame
 import random
 
 # teste
+# a
 
 class Dino:
     def __init__(self):
