@@ -34,7 +34,7 @@ class Dino:
         self.rect.y = self.y
 
 
-    def movimentacao(self):
+    def movimentacao(self ):
         keys = pygame.key.get_pressed()
         self.pixels_count += 1
         self.velocidade += 0.001
