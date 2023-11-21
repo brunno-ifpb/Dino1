@@ -1,34 +1,34 @@
-import dino, cactus, chao, pygame
+import dino, cactus, chao, pygame 
+import random
 
 def main():
-    try:
-        dino1 = dino.Dino()
-        cacto1 = cactus.Cacto()
-        chao1 = chao.Chao()
+    
+    dino1 = dino.Dino()
+    cacto1 = cactus.Cacto
+    chao1 = chao.Chao
 
-        while True:
-            
-            clock.tick(60)
+    while True:
+        
+        clock.tick(60)
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
-            dino1.movimentacao()
-            cacto1.movimentacao(dino1)
-            chao1.movimentacao()
+        dino1.movimentacao()
+        cacto1.movimentacao(dino1)
+        chao1.movimentacao()
 
-            dino1.desenhar(screen)
-            cacto1.desenhar(screen)
-            chao1.desenhar(screen)
+        dino1.desenhar(screen)
+        cacto1.desenhar(screen)
+        chao1.desenhar(screen)
 
-            cacto1.colisao(dino1)
+        cacto1.colisao(dino1, 0)
 
-            pygame.display.flip()
-            screen.fill((0, 0, 0))
-    except:
-         pass
+        pygame.display.flip()
+        screen.fill((0, 0, 0))
+    
 
 pygame.init()
 
