@@ -1,13 +1,11 @@
-import dino, cactus, chao, pygame, random
-
-# Loop principal
-def main():
+import dino, chao, pygame, cactus
+def main(screen, clock):
     try:  
         dino1 = dino.Dino()
-        cacto1 = cactus.random_def()
+        cacto1 = cactus.Cacto()
         chao1 = chao.Chao()
 
-        while True:
+        while True: 
                 
             clock.tick(60)
 
@@ -16,7 +14,7 @@ def main():
                     pygame.quit()
                     quit()
 
-            dino1.movimentacao()
+            dino1.movimentacao() 
             cacto1.movimentacao(dino1)
             chao1.movimentacao()
 
@@ -30,14 +28,3 @@ def main():
             screen.fill((0, 0, 0))
     except:
         pass
-
-
-pygame.init()
-
-screen = pygame.display.set_mode((600, 400))
-clock = pygame.time.Clock()
-pygame.display.set_caption("Dino")
-
-main()
-
-pygame.quit()
