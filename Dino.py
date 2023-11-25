@@ -30,7 +30,6 @@ class Dino:
                 self.y = 276
                 self.pulo = False
                 self.caindo = False
-
         self.rect.y = self.y
 
 
@@ -38,10 +37,8 @@ class Dino:
         keys = pygame.key.get_pressed()
         self.pixels_count += 1
         self.velocidade += 0.001
-
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             self.pular()
-
         self.gravidades()
 
     def desenhar(self, screen):

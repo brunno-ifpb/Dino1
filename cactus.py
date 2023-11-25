@@ -9,7 +9,7 @@ class Cacto:
         self.tamanho_ya = int(self.tamanho_y[0])
         self.y = self.tamanho_y[2]
         self.x = 600
-        self.rect = pygame.Rect(self.x, self.y, self.tamanho_xa, self.tamanho_ya)
+        self.rect = pygame.Rect(self.x + 10, self.y, self.tamanho_xa, self.tamanho_ya)
 
     def movimentacao(self, dino):
         if self.x <= -20:
@@ -28,8 +28,7 @@ class Cacto:
 
 
         
-        self.rect = pygame.Rect(self.x, self.y, self.tamanho_xa, self.tamanho_ya)
-          # Ajuste nas dimensões
+        self.rect = pygame.Rect(self.x +13, self.y, self.tamanho_xa, self.tamanho_ya)
 
     def desenhar(self, screen):
         pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, self.tamanho_xa, self.tamanho_ya))
@@ -39,5 +38,5 @@ class Cacto:
             pygame.quit()
             print(dino.pixels_count // 10)
 
-tamanho = ((40, 20, 256), (60, 40,236), (70,60,226))
+tamanho = ((40, 20, 256), (60, 35,236), (70,50,226))
 # y, x, pos_y
