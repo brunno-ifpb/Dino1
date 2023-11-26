@@ -12,6 +12,7 @@ class Dino:
         self.pixels_count = 0
         self.font = pygame.font.Font(None, 36)
         self.velocidade = 10
+        self.sprite = pygame.image.load('sprites/Dino.png')
 
     def pular(self):
         if not self.pulo and not self.caindo and self.y == 276:
@@ -41,7 +42,13 @@ class Dino:
             self.pular()
         self.gravidades()
 
-    def desenhar(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
+    def desenhar(self, screen, hitboxes):
+        # Desenha o quadrado
+        if hitboxes == True:
+            pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
+        #desenha dino
+        screen.blit(self.sprite, (self.x, self.y))
+        #desenha o contador
         pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (255, 255, 255))
-        screen.blit(pixels_count_surface, (550, 10))  
+
+        screen.blit(pixels_count_surface, (550, 10))
