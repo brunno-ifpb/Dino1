@@ -36,8 +36,6 @@ class Cacto:
         if self.rect.colliderect(dino.rect):
             pygame.quit()
             dino.pontuacao()
-            print(int(dino.pixels_count // 10))
-            
             #gameover.abrir_site()
 
 tamanho = ((40, 20, 256), (60, 35,236), (70,50,226))
