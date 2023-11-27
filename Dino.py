@@ -7,6 +7,7 @@ class Dino:
         self.gravidade = 6
         self.x = 100
         self.y = 276
+        self.p = 0
         self.rect = pygame.Rect(self.x, self.y, 20, 20)
         self.altura_do_pulo = 0
         self.pixels_count = 0
@@ -33,12 +34,14 @@ class Dino:
                 self.caindo = False
         self.rect.y = self.y
 
-
     def movimentacao(self ):
         keys = pygame.key.get_pressed()
-        self.pixels_count += 1
+        if self.pixels_count % 1000 == 0:
+            self.p += 0.5
+        self.pixels_count += 1 + self.p
         self.velocidade += 0.001
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
+            
             self.pular()
         self.gravidades()
 
@@ -49,6 +52,6 @@ class Dino:
         #desenha dino
         screen.blit(self.sprite, (self.x, self.y))
         #desenha o contador
-        pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (0,0,0))
+        pixels_count_surface = self.font.render(str(int(self.pixels_count//10)), True, (0,0,0))
 
         screen.blit(pixels_count_surface, (550, 10))

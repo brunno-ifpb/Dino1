@@ -3,7 +3,7 @@ import pygame, random, gameover
 class Cacto:
     def __init__(self):
         
-        self.velocidade = 10
+        self.velocidade = 5
         self.tamanho_x = random.choice(tamanho)
         self.tamanho_y = random.choice(tamanho)
         self.tamanho_xa = int(self.tamanho_x[1])
@@ -23,7 +23,7 @@ class Cacto:
         if dino.pixels_count // 10 > 10:
             self.x -= self.velocidade + random.randint(0, 8)
             if self.x <= -30:
-                self.x = random.randint(600, 800)
+                self.x = random.randint(600, 1000)
                 if self.velocidade < 30:
                     self.velocidade += 0.1
         self.rect = pygame.Rect(self.x, self.y, self.tamanho_xa, self.tamanho_ya)
@@ -35,8 +35,8 @@ class Cacto:
     def colisao(self, dino):
         if self.rect.colliderect(dino.rect):
             pygame.quit()
-            print(dino.pixels_count // 10)
+            print(int(dino.pixels_count // 10))
             #gameover.abrir_site()
 
-tamanho = ((40, 20, 256, 'sprites/Cactus.png'), (60, 35,236), (70,50,226))
+tamanho = ((40, 20, 256), (60, 35,236), (70,50,226))
             #y, x, pos_y
