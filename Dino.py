@@ -49,6 +49,6 @@ class Dino:
         #desenha dino
         screen.blit(self.sprite, (self.x, self.y))
         #desenha o contador
-        pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (255, 255, 255))
+        pixels_count_surface = self.font.render(str(self.pixels_count//10), True, (0,0,0))
 
         screen.blit(pixels_count_surface, (550, 10))

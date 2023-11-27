@@ -6,7 +6,6 @@ class Cacto:
         self.velocidade = 10
         self.tamanho_x = random.choice(tamanho)
         self.tamanho_y = random.choice(tamanho)
-        self.sprite = pygame.image.load(self.tamanho_y[3])
         self.tamanho_xa = int(self.tamanho_x[1])
         self.tamanho_ya = int(self.tamanho_y[0])
         self.y = self.tamanho_y[2]
@@ -31,7 +30,7 @@ class Cacto:
 
     def desenhar(self, screen):
         pygame.draw.rect(screen, (0, 255, 0), (self.x, self.y, self.tamanho_xa, self.tamanho_ya))
-        screen.blit(self.sprite, (self.x, self.y))
+
 
     def colisao(self, dino):
         if self.rect.colliderect(dino.rect):
