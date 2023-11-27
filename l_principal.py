@@ -1,7 +1,5 @@
 import dino, chao, pygame, cactus
 def main(screen, clock, hitboxes):
-    
-    try:  
         dino1 = dino.Dino()
         cacto1 = cactus.Cacto()
         chao1 = chao.Chao()
@@ -24,5 +22,3 @@ def main(screen, clock, hitboxes):
 
             pygame.display.flip()
             screen.fill((255, 255, 255))
-    except:
-        pass

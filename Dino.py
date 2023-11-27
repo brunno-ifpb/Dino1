@@ -1,4 +1,5 @@
 import pygame
+import os
 
 class Dino:
     def __init__(self):
@@ -14,11 +15,12 @@ class Dino:
         self.font = pygame.font.Font(None, 36)
         self.velocidade = 10
         self.sprite = pygame.image.load('sprites/Dino.png')
+        
 
     def pular(self):
         if not self.pulo and not self.caindo and self.y == 276:
             self.pulo = True
-            self.altura_do_pulo = 12
+            self.altura_do_pulo = 15
 
     def gravidades(self):
         if self.pulo and self.altura_do_pulo > 0:
@@ -39,6 +41,10 @@ class Dino:
         if self.pixels_count % 1000 == 0:
             self.p += 0.5
         self.pixels_count += 1 + self.p
+        
+        
+        #with open()
+        #self.arquivo.write(f"{self.pixels_count}")
         self.velocidade += 0.001
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             
@@ -55,3 +61,7 @@ class Dino:
         pixels_count_surface = self.font.render(str(int(self.pixels_count//10)), True, (0,0,0))
 
         screen.blit(pixels_count_surface, (550, 10))
+
+    def pontuacao(self):
+        with open("point.txt", "a") as f:
+            f.write(f"{int(self.pixels_count//10)} \n" )
