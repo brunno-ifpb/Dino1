@@ -1,6 +1,7 @@
 import pygame, l_principal
 hitboxes = True
 pygame.init() 
+pygame.mixer.init()
 screen = pygame.display.set_mode((1200, 600))
 clock = pygame.time.Clock()
 pygame.display.set_caption("jogo do GALO")
@@ -9,4 +10,5 @@ try:
 except:
     pass
 pygame.quit()
+pygame.mixer.quit()
  

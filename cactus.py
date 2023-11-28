@@ -35,6 +35,7 @@ class Cacto:
     def colisao(self, dino):
         if self.rect.colliderect(dino.rect):
             pygame.quit()
+            pygame.mixer.quit()
             dino.pontuacao()
             #gameover.abrir_site()
 

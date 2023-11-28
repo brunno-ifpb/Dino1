@@ -1,11 +1,10 @@
-import pygame
-import os
+import pygame, tocamusica
 
 class Dino:
     def __init__(self):
         self.pulo = False
         self.caindo = False
-        self.gravidade = 9
+        self.gravidade = 10
         self.x = 200
         self.y = 406
         self.p = 0
@@ -17,10 +16,10 @@ class Dino:
         self.sprite1 = pygame.image.load('sprites/t-rex-0.png')
         self.sprite2 = pygame.image.load('sprites/t-rex-1.png')
         self.triger = 406
-        
 
     def pular(self):
         if not self.pulo and not self.caindo and self.y == self.triger:
+            tocamusica.Som()
             self.pulo = True
             self.altura_do_pulo = 19
 
@@ -40,7 +39,7 @@ class Dino:
 
     def movimentacao(self ):
         keys = pygame.key.get_pressed()
-        if self.pixels_count % 1000 == 0:
+        if self.pixels_count % 10000 == 0:
             self.p += 0.5
         self.pixels_count += 1 + self.p
         self.velocidade += 0.001

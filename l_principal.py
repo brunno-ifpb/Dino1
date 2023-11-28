@@ -8,6 +8,7 @@ def main(screen, clock, hitboxes):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
+                    pygame.mixer.quit()
                     quit()
             #funções principais
             dino1.movimentacao() 
