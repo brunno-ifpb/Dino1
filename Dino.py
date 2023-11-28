@@ -5,22 +5,24 @@ class Dino:
     def __init__(self):
         self.pulo = False
         self.caindo = False
-        self.gravidade = 8
-        self.x = 100
-        self.y = 276
+        self.gravidade = 9
+        self.x = 200
+        self.y = 406
         self.p = 0
-        self.rect = pygame.Rect(self.x, self.y, 20, 20)
+        self.rect = pygame.Rect(self.x, self.y, 88, 94)
         self.altura_do_pulo = 0
         self.pixels_count = 0
         self.font = pygame.font.Font(None, 36)
         self.velocidade = 15
-        self.sprite = pygame.image.load('sprites/t-rex-0.png')
+        self.sprite1 = pygame.image.load('sprites/t-rex-0.png')
+        self.sprite2 = pygame.image.load('sprites/t-rex-1.png')
+        self.triger = 406
         
 
     def pular(self):
-        if not self.pulo and not self.caindo and self.y == 276:
+        if not self.pulo and not self.caindo and self.y == self.triger:
             self.pulo = True
-            self.altura_do_pulo = 14
+            self.altura_do_pulo = 19
 
     def gravidades(self):
         if self.pulo and self.altura_do_pulo > 0:
@@ -28,10 +30,10 @@ class Dino:
             self.altura_do_pulo -= 1
         else:
             self.caindo = True
-            if self.y < 276:
+            if self.y < self.triger:
                 self.y += self.gravidade
             else:
-                self.y = 276
+                self.y = self.triger
                 self.pulo = False
                 self.caindo = False
         self.rect.y = self.y
@@ -43,20 +45,19 @@ class Dino:
         self.pixels_count += 1 + self.p
         self.velocidade += 0.001
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
-            
             self.pular()
         self.gravidades()
 
     def desenhar(self, screen, hitboxes):
         # Desenha o quadrado
         if hitboxes == True:
-            pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 20, 20))
+            pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, 88, 94))
         #desenha dino
-        screen.blit(self.sprite, (self.x, self.y))
+        screen.blit(self.sprite1, (self.x, self.y))
+        #screen.blit(self.sprite2, (self.x, self.y))
         #desenha o contador
         pixels_count_surface = self.font.render(str(int(self.pixels_count//10)), True, (0,0,0))
-
-        screen.blit(pixels_count_surface, (550, 10))
+        screen.blit(pixels_count_surface, (1150, 10))
 
     def pontuacao(self):
         with open("point.txt", "a") as f:
