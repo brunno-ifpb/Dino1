@@ -38,5 +38,5 @@ class Cacto:
             dino.pontuacao()
             #gameover.abrir_site()
 
-tamanho = ((40, 20, 256), (60, 35,236), (70,50,226))
+tamanho = ((400, 20, 256), (600, 35,236), (700,50,226))
             #y, x, pos_y

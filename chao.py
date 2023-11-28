@@ -3,7 +3,7 @@ import pygame
 class Chao:
     def __init__(self):
         self.x = 0
-        self.y = 346
+        self.y = 550
         self.velocidade = 0
 
     def movimentacao(self):

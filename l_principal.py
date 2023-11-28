@@ -21,4 +21,4 @@ def main(screen, clock, hitboxes):
             cacto1.colisao(dino1)
 
             pygame.display.flip()
-            screen.fill((0, 0, 255))
+            screen.fill((255, 255, 255))

@@ -1,11 +1,12 @@
 import pygame, l_principal
-hitboxes = False
+hitboxes = True
 pygame.init() 
-screen = pygame.display.set_mode((600, 400))
+screen = pygame.display.set_mode((1200, 600))
 clock = pygame.time.Clock()
-pygame.display.set_caption("jogo da GALINHA")
+pygame.display.set_caption("jogo do GALO")
 try:
     l_principal.main(screen, clock, hitboxes)
 except:
     pass
 pygame.quit()
+ 
