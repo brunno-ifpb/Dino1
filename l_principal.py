@@ -19,7 +19,7 @@ def main(screen, clock, hitboxes):
             cacto1.desenhar(screen)
             chao1.desenhar(screen)
 
-            cacto1.colisao(dino1)
+            #cacto1.colisao(dino1)
 
             pygame.display.flip()
             screen.fill((255, 255, 255))

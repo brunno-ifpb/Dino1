@@ -1,4 +1,5 @@
-import pygame, tocamusica
+import pygame
+from tocamusica import som
 
 class Dino:
     def __init__(self):
@@ -19,7 +20,7 @@ class Dino:
 
     def pular(self):
         if not self.pulo and not self.caindo and self.y == self.triger:
-            tocamusica.Som()
+            som.Som_pulo()
             self.pulo = True
             self.altura_do_pulo = 19
 

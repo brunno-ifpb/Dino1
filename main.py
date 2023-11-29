@@ -1,5 +1,5 @@
 import pygame, l_principal
-hitboxes = True
+hitboxes = False
 pygame.init() 
 pygame.mixer.init()
 screen = pygame.display.set_mode((1200, 600))
@@ -11,4 +11,3 @@ except:
     pass
 pygame.quit()
 pygame.mixer.quit()
- 
