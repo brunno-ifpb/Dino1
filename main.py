@@ -1,5 +1,5 @@
 import pygame, l_principal
-from dino import Dino
+from Dino import Dino
 
 
 

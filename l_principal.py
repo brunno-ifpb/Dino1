@@ -1,6 +1,6 @@
-import dino, chao, pygame, cactus
+import Dino, chao, pygame, cactus
 def main(screen, clock, hitboxes):
-        dino1 = dino.Dino()
+        dino1 = Dino.Dino()
         cacto1 = cactus.Cacto()
         chao1 = chao.Chao()
         while True:

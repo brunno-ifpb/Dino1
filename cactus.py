@@ -1,4 +1,4 @@
-import pygame, random, gameover, dino
+import pygame, random, gameover, Dino
 
 class Cacto:
     def __init__(self):
