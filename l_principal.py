@@ -19,7 +19,8 @@ def main(screen, clock, hitboxes):
             cacto1.desenhar(screen)
             chao1.desenhar(screen)
 
-            #cacto1.colisao(dino1)
+            if cacto1.colisao(dino1):
+                 return dino1.pontos()
 
             pygame.display.flip()
             screen.fill((255, 255, 255))

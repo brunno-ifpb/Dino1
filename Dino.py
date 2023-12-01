@@ -5,14 +5,16 @@ class Dino:
     def __init__(self):
         self.pulo = False
         self.caindo = False
-        self.gravidade = 10
+        self.gravidade = 6.5
         self.x = 200
         self.y = 406
         self.p = 0
         self.rect = pygame.Rect(self.x, self.y, 88, 94)
-        self.altura_do_pulo = 0
+        self.altura_do_pulo = 100
         self.pixels_count = 0
-        self.font = pygame.font.Font(None, 36)
+        try:
+            self.font = pygame.font.Font(None, 36)
+        except: pass
         self.velocidade = 15
         self.sprite1 = pygame.image.load('sprites/t-rex-0.png')
         self.sprite2 = pygame.image.load('sprites/t-rex-1.png')
@@ -62,3 +64,6 @@ class Dino:
     def pontuacao(self):
         with open("point.txt", "a") as f:
             f.write(f"{int(self.pixels_count//10)} \n" )
+
+    def pontos(self):
+        return int(self.pixels_count//10)

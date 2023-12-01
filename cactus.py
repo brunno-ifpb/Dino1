@@ -3,7 +3,7 @@ import pygame, random, gameover, dino
 class Cacto:
     def __init__(self):
         
-        self.velocidade = 10
+        self.velocidade = 11
         self.tamanho_x = random.choice(tamanho)
         self.tamanho_y = random.choice(tamanho)
         self.tamanho_xa = int(self.tamanho_x[1])
@@ -24,8 +24,8 @@ class Cacto:
             self.x -= self.velocidade + random.randint(0, 8)
             if self.x <= -30:
                 self.x = random.randint(1400, 2000)
-                if self.velocidade < 30:
-                    self.velocidade += 0.1
+                if self.velocidade < 28:
+                    self.velocidade += 0.2
         self.rect = pygame.Rect(self.x, self.y, self.tamanho_xa, self.tamanho_ya)
 
     def desenhar(self, screen):
@@ -37,6 +37,7 @@ class Cacto:
             pygame.quit()
             pygame.mixer.quit()
             dino.pontuacao()
+            return True
             #gameover.abrir_site()
 
 tamanho = ((70, 20, 430), (100, 35,400), (130,50,370))
